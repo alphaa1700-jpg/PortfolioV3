@@ -1,25 +1,20 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
-      nodejs: 16
+      nodejs: 18
     commands:
-      - echo Installing
-  pre_build:
-    commands:
-      - echo Installing source NPM dependencies.
-     
+      - echo Installing dependencies...
+      - npm ci --legacy-peer-deps
+
   build:
     commands:
-      - echo Build started on `date`
-      - npm install
-      - npm install pm2 -g
+      - echo Building the React app...
+      - npm run build
 
-  post_build:
-    commands:
-      - echo Build completed on `date`
 artifacts:
   files:
     - '**/*'
-    - appspec.yml
-    - application-start-hook.sh
+  base-directory: dist
+  discard-paths: no
