@@ -1,20 +1,12 @@
 version: 0.0
 os: linux
+
 files:
- - source: /
-   destination: /home/ubuntu/Portfolio2
-permissions:
- - object: /home/ubuntu/Portfolio2
-   pattern: '**'
-   mode: '0755'
-   owner: ubuntu
-   group: ubuntu
-   type:
-     - file
-     - directory
+  - source: /
+    destination: /var/www/nodeapp
+
 hooks:
-  
-  ApplicationStart:
-    - location: application-start-hook.sh
+  AfterInstall:
+    - location: scripts/app.sh
       timeout: 300
       runas: ubuntu
