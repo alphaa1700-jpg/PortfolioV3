@@ -5,16 +5,16 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo Installing dependencies...
-      - npm ci --legacy-peer-deps
+      - echo "Installing dependencies for packaging..."
+      - npm install
 
   build:
     commands:
-      - echo Building the React app...
-      - npm run build
+      - echo "No build step required for Node.js backend"
 
 artifacts:
   files:
     - '**/*'
-  base-directory: dist
+    - appspec.yml
+    - scripts/**/*
   discard-paths: no
