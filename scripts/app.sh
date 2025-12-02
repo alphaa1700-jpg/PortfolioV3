@@ -1,15 +1,13 @@
 #!/bin/bash
-echo "started"
-pwd
 
-cd /home/ubuntu/Portfolio2 && npm install
+echo "Starting Node app deployment..."
 
-cd /home/ubuntu/Portfolio2 && npm install pm2
+cd /var/www/nodeapp
 
-pwd
+echo "Installing dependencies..."
+npm install --production
 
-cd /home/ubuntu/Portfolio2 && pm2 restart Portfolio2
+echo "Restarting nodeapp service..."
+sudo systemctl restart nodeapp
 
-pwd
-
-echo "finished"
+echo "Deployment complete!"
